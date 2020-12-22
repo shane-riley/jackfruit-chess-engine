@@ -10,3 +10,5 @@ A file for storing research links on the chess engine project.
 - [React/Redux](https://redux.js.org/tutorials/fundamentals/part-5-ui-react)
 - [jQuery](https://api.jquery.com/)
 - [Flask](https://flask.palletsprojects.com/en/1.1.x/#user-s-guide)
+- [Chess.js](https://github.com/jhlywa/chess.js)
+- [Chessboard.js](https://chessboardjs.com/)

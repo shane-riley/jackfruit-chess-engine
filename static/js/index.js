@@ -6,6 +6,7 @@ function load(){
 	ending.id = "ending-banner";
 	ending.style.display = "none";					//Initially hidden
 	end_banner.appendChild(ending);
+
 	board = Chessboard('board', {		//Create the board GUI
 		draggable : true,			//Allow the pieces to be moved
 		position : 'start',			//Create the board in starting position
@@ -13,6 +14,7 @@ function load(){
 		onChange : onChange
 	});
 	game = new Chess();					//Create the game logic
+
 	var button_container = document.getElementById("btn-container");	//Buttons for actions
 	var clear = document.createElement("button");		//Clears the board
 	clear.id = "btn-clear";
@@ -21,6 +23,8 @@ function load(){
 		board.clear();
 		newGame();
 	}
+	button_container.appendChild(clear);
+
 	var start = document.createElement("button");		//Resets back to start positions
 	start.id = "btn-start";
 	start.textContent = "Start Position";
@@ -28,8 +32,23 @@ function load(){
 		board.start();
 		newGame();
 	}
-	button_container.appendChild(clear);
 	button_container.appendChild(start);
+
+	var btn_undo = document.createElement("button");
+	btn_undo.id = "btn-undo";
+	btn_undo.textContent = "Undo Last Move";
+	btn_undo.onclick = function() {
+		game.undo();
+		board.position(game.fen(), true);
+	}
+	button_container.appendChild(btn_undo);
+
+	var btn_resize = document.createElement("button");
+	btn_resize.id = "btn-resize";
+	btn_resize.textContent = "Click after resizing board!";
+	btn_resize.onclick = board.resize;
+	button_container.appendChild(btn_resize);
+
 	var fen_btn = document.createElement("button");		//temporary to send fen to server
 	fen_btn.textContent = "Send Fen to Server"
 	fen_btn.onclick = sendFen;
