@@ -12,7 +12,6 @@ def getFen():
 	global fen
 	if request.method == 'POST':
 		fen = request.get_json()['fen']
-		print(fen)
 		return "OK", 200
 	if request.method == 'GET':
 		return {'fen' : fen}, 200

@@ -57,8 +57,8 @@ function load(){
 
 function newGame(){
 	document.getElementById("PGN-banner").textContent = '';
-	ending.style.display = "none";					//Initially hidden
-	game = new Chess();
+	document.getElementById("ending-banner").style.display = "none";					//Initially hidden
+	game.reset();
 
 }
 
@@ -98,6 +98,7 @@ function onChange(oldPos, newPos){
 			ending.textContent = "Game is a draw!";
 		}
 	}
+	sendFen();
 
 }
 
